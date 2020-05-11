@@ -1,0 +1,26 @@
+<template>
+  <div if:false={casesSpinner}>
+    <lightning-card variant="narrow">
+      <div style="margin-top:-15px">
+        <lightning-datatable
+          data={properties}
+          columns={columns}
+          key-field="Id"
+          is-loading={tableLoadingState}
+          hide-checkbox-column
+          sorted-direction={sortDirection}          
+          sorted-by={sortedBy}
+          onsort={updateColumnSorting}
+        >
+        </lightning-datatable>
+      </div>
+    </lightning-card>
+  </div>
+  <div if:true={showSpinner} class="slds-spinner_inline spinner-padding">
+    <lightning-spinner
+      variant="brand"
+      alternative-text="Loading Cases"
+      size="medium"
+    ></lightning-spinner>
+  </div>
+</template>
